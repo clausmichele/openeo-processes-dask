@@ -158,7 +158,7 @@ def load_stac(
             f"The provided URL is a STAC {asset_type}, which is not yet supported. Please provide a valid URL to a STAC Collection or Item."
         )
     available_assets = list(items[0].assets.keys())
-    if len(set(available_assets) & set(bands)) == 0:
+    if bands is not None and len(set(available_assets) & set(bands)) == 0:
         raise OpenEOException(
             f"The provided bands: {bands} can't be found in the STAC assets: {available_assets}"
         )
